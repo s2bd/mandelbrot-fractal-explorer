@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Main
+comment0.text=\n\ Main\ class\ that\ generates\ GUI\ windows\ and\ layouts\n\n\ @author\ Dewan\ Mukto\n\ @version\ 2024-10-07\ 1.1\n
+comment1.params=
+comment1.target=Main()
+comment1.text=\n\ Main\ Constructor\n\n
+comment2.params=explorer
+comment2.target=javax.swing.JToolBar\ createToolbar(Explorer)
+comment2.text=\n\ Prepares\ the\ toolbar\ below\ the\ title\ bar\n\n\ @return\ \ toolbar\ component\ for\ the\ GUI\ windkow\n
+comment3.params=text\ action
+comment3.target=javax.swing.JButton\ createButton(java.lang.String,\ java.awt.event.ActionListener)
+comment3.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ \ text\ \ \ \ the\ label\ for\ the\ button\n\ @param\ \ \ action\ \ the\ task\ carried\ out\ by\ the\ button\n\ @return\ \ creates\ a\ button\n
+comment4.params=
+comment4.target=void\ showAboutDialog()
+comment4.text=\n\ Displays\ the\ credits\ dialog\ box\n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\n\ The\ executable\ function\n
+numComments=6
