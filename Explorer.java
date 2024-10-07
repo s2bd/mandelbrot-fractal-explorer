@@ -28,11 +28,8 @@ public class Explorer extends JPanel implements KeyListener {
     private JLabel statusBar;
     private boolean autoZooming = false; 
     private Timer autoZoomTimer;
+    private Settings settings;
 
-    /**
-     * Explorer Constructor
-     *
-     */
     public Explorer() {
         mandelbrotImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
@@ -40,9 +37,15 @@ public class Explorer extends JPanel implements KeyListener {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setFocusable(true);
         addKeyListener(this);
+        this.settings = settings;
         
         // Initial rendering
         renderMandelbrot();
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;  // Store the settings
+        Renderer.setSettings(settings); // Ensure Renderer has access to settings
     }
 
     public void setStatusBar(JLabel statusBar) {
@@ -53,26 +56,34 @@ public class Explorer extends JPanel implements KeyListener {
         return zoom;
     }
 
-    /**
-     * Renders the fractal
-     *
-     */
     public void renderMandelbrot() {
         long startTime = System.nanoTime();
-
-        for (int y = 0; y < HEIGHT; y++) {
-            final int yFinal = y;
-            executor.submit(() -> {
+        
+        if (settings != null) {
+            for (int y = 0; y < HEIGHT; y++) {
+                final int yFinal = y;
+                executor.submit(() -> {
+                    for (int x = 0; x < WIDTH; x++) {
+                        double c_real = (x - WIDTH / 2) / zoom + xOffset;
+                        double c_imag = (yFinal - HEIGHT / 2) / zoom + yOffset;
+                        Color color = Renderer.mandelbrot(c_real, c_imag, zoom); 
+                        mandelbrotImage.setRGB(x, yFinal, color.getRGB());
+                    }
+                });
+            }
+            settings.getMode();
+        } else {
+             System.out.println("Settings is not initialized");
+             for (int y = 0; y < HEIGHT; y++) {
                 for (int x = 0; x < WIDTH; x++) {
                     double c_real = (x - WIDTH / 2) / zoom + xOffset;
-                    double c_imag = (yFinal - HEIGHT / 2) / zoom + yOffset;
-                    int color = Renderer.mandelbrot(c_real, c_imag, zoom); // Use Renderer class
-                    mandelbrotImage.setRGB(x, yFinal, new Color(color, color, color).getRGB());
+                    double c_imag = (y - HEIGHT / 2) / zoom + yOffset;
+                    Color color = Renderer.mandelbrot(c_real, c_imag, zoom);
+                    mandelbrotImage.setRGB(x, y, color.getRGB());
                 }
-            });
+            }
         }
 
-        // Lambda for multi-threaded processing
         executor.submit(() -> {
             try {
                 Thread.sleep(50);
@@ -92,7 +103,7 @@ public class Explorer extends JPanel implements KeyListener {
 
     public void zoom(double factor) {
         zoom *= factor;
-        panSpeed = 20 / zoom;
+        panSpeed = 20 / zoom;  // Recalculate pan speed
         renderMandelbrot();
     }
 
@@ -100,14 +111,10 @@ public class Explorer extends JPanel implements KeyListener {
         xOffset = -0.5;
         yOffset = 0;
         zoom = 300;
-        panSpeed = 20 / zoom;
+        panSpeed = 20 / zoom;  // Reset pan speed
         renderMandelbrot();
     }
 
-    /**
-     * Renders out an actual image file for locally storing screenshots
-     *
-     */
     public void saveImage() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Specify a file to save");
@@ -118,7 +125,6 @@ public class Explorer extends JPanel implements KeyListener {
             File fileToSave = fileChooser.getSelectedFile();
             String filePath = fileToSave.getAbsolutePath();
             
-            // Ensure the file has the right extension
             if (!filePath.endsWith(".jpg") && !filePath.endsWith(".jpeg") && !filePath.endsWith(".png")) {
                 filePath += ".png"; // Default to PNG format
             }
@@ -153,7 +159,6 @@ public class Explorer extends JPanel implements KeyListener {
         }
     }
 
-    // Keyboard input listeners
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -172,7 +177,6 @@ public class Explorer extends JPanel implements KeyListener {
         g.drawImage(mandelbrotImage, 0, 0, null);
     }
 
-    // Keyboard continuous press listeners
     @Override
     public void keyReleased(KeyEvent e) {}
     @Override

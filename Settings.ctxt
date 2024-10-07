@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Settings
+comment0.text=\n\ Settings\ class\ that\ stores\ the\ configuration\ options\ for\ rendering\n\n\ @author\ Dewan\ Mukto\n\ @version\ 2024-10-07\ 1.0\n
+comment1.params=
+comment1.target=Settings()
+comment1.text=\n\ Constructor\ initializes\ the\ default\ mode\ as\ Fast\ Mode\n
+comment2.params=mode
+comment2.target=void\ setMode(Settings.Mode)
+comment2.text=\n\ Sets\ the\ mode\ to\ either\ Fast\ or\ Scaled\n
+comment3.params=
+comment3.target=Settings.Mode\ getMode()
+comment3.text=\n\ Returns\ the\ current\ mode\n
+numComments=4
