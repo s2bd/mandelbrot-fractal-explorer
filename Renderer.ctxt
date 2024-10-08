@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.target=Renderer
-comment0.text=\n\ The\ calculations\ behind\ each\ iteration\ of\ the\ fractal\n\n\ @author\ Dewan\ Mukto\n\ @version\ 2024-10-07\ 1.4\n
+comment0.text=\n\ The\ calculations\ behind\ each\ iteration\ of\ the\ fractal\n\n\ @author\ Dewan\ Mukto\n\ @version\ 2024-10-08\ 1.4\n
 comment1.params=settings
 comment1.target=void\ setSettings(Settings)
-comment2.params=c_real\ c_imag\ zoom
-comment2.target=java.awt.Color\ mandelbrot(double,\ double,\ double)
-numComments=3
+comment2.params=zoom\ width\ height
+comment2.target=java.awt.image.BufferedImage\ renderMandelbrot(double,\ int,\ int)
+comment3.params=c_real\ c_imag\ zoom
+comment3.target=java.awt.Color\ mandelbrot(double,\ double,\ double)
+comment4.params=
+comment4.target=void\ shutdownExecutor()
+numComments=5
