@@ -112,6 +112,7 @@ public class Explorer extends JPanel implements KeyListener {
         yOffset = 0;
         zoom = 300;
         panSpeed = 20 / zoom;  // Reset pan speed
+        settings.setMaxIterations(100); // Reset detail
         renderMandelbrot();
     }
 
@@ -158,19 +159,28 @@ public class Explorer extends JPanel implements KeyListener {
             autoZoomTimer.stop();
         }
     }
+    
+    public void changeDetail(int change) {
+    settings.setMaxIterations(settings.getMaxIterations() + change);
+    renderMandelbrot();  // Re-render with new detail settings
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_W) zoom(1.1);
-        if (key == KeyEvent.VK_S) zoom(1 / 1.1);
-        if (key == KeyEvent.VK_UP) yOffset -= panSpeed;
-        if (key == KeyEvent.VK_DOWN) yOffset += panSpeed;
-        if (key == KeyEvent.VK_LEFT) xOffset -= panSpeed;
-        if (key == KeyEvent.VK_RIGHT) xOffset += panSpeed;
-        renderMandelbrot();
+    int key = e.getKeyCode();
+    if (key == KeyEvent.VK_W) zoom(1.1);
+    if (key == KeyEvent.VK_S) zoom(1 / 1.1);
+    if (key == KeyEvent.VK_UP) yOffset -= panSpeed;
+    if (key == KeyEvent.VK_DOWN) yOffset += panSpeed;
+    if (key == KeyEvent.VK_LEFT) xOffset -= panSpeed;
+    if (key == KeyEvent.VK_RIGHT) xOffset += panSpeed;
+    if (key == KeyEvent.VK_A) toggleAutoZoom();  // Auto Zoom (A)
+    if (key == KeyEvent.VK_R) resetView();        // Reset (R)
+    if (key == KeyEvent.VK_D) changeDetail(-100); // Less Detail (D)
+    if (key == KeyEvent.VK_F) changeDetail(100);  // More Detail (F)
+    renderMandelbrot(); // Re-render after key press
     }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

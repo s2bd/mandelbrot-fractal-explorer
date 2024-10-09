@@ -47,15 +47,21 @@ public class Main {
      * @return toolbar component for the GUI window
      */
     private JToolBar createToolbar(Explorer explorer) {
-        JToolBar toolbar = new JToolBar();
-        toolbar.add(createButton("Zoom In (W)", e -> explorer.zoom(1.1)));
-        toolbar.add(createButton("Zoom Out (S)", e -> explorer.zoom(1 / 1.1)));
-        toolbar.add(createButton("Reset", e -> explorer.resetView()));
-        toolbar.add(createButton("Save Image", e -> explorer.saveImage()));
-        toolbar.add(createButton("Auto Zoom", e -> explorer.toggleAutoZoom()));
-        toolbar.add(createButton("About", e -> showAboutDialog()));
-        return toolbar;
-    }
+    JToolBar toolbar = new JToolBar();
+    toolbar.add(createButton("Zoom In (W)", e -> explorer.zoom(1.1)));
+    toolbar.add(createButton("Zoom Out (S)", e -> explorer.zoom(1 / 1.1)));
+    toolbar.add(createButton("Reset (R)", e -> explorer.resetView()));
+    toolbar.add(createButton("Save Image", e -> explorer.saveImage()));
+    toolbar.add(createButton("Auto Zoom (A)", e -> explorer.toggleAutoZoom()));
+    
+    // New buttons for detail control
+    toolbar.add(createButton("Less Detail (D)", e -> explorer.changeDetail(-100)));
+    toolbar.add(createButton("More Detail (F)", e -> explorer.changeDetail(100)));
+
+    toolbar.add(createButton("About", e -> showAboutDialog()));
+    return toolbar;
+}
+
 
     /**
      * Creates the status bar with zoom level and radio buttons for mode selection
@@ -108,9 +114,10 @@ public class Main {
      * Displays the credits dialog box
      */
     private void showAboutDialog() {
-        String aboutText = "<html><b>Mandelbrot Explorer</b><br>" +
+        String aboutText = "<html><b>Mandelbrot Explorer</b> <font color='#cfcfcf'>v1.3 2024-10-09</font><br>" +
                 "&copy; Muxday 2024 <br><br><br>" +
-                "Based on Benoit Mandelbrot's fractal discovery, programmed by Dewan Mukto</html>";
+                "Based on Benoit Mandelbrot's fractal discovery,<br>programmed by Dewan Mukto<br>" +
+                "<a href='https://dewanmukto.com'>dewanmukto.com</a></html>";
         JOptionPane.showMessageDialog(null, aboutText, "About", JOptionPane.INFORMATION_MESSAGE);
     }
 

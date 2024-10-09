@@ -13,6 +13,7 @@ public class Settings {
     }
 
     private Mode currentMode;
+    private int maxIterations = 100;
 
     /**
      * Constructor initializes the default mode as Fast Mode
@@ -33,5 +34,13 @@ public class Settings {
      */
     public Mode getMode() {
         return currentMode;
+    }
+
+    public int getMaxIterations(){
+            return maxIterations;
+        }
+        
+    public void setMaxIterations(int maxIterations){
+        this.maxIterations = Math.max(100, maxIterations);
     }
 }
