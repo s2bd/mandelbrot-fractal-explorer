@@ -9,7 +9,7 @@ Made in BlueJ,aye! :P
 Compile all and run `Main.class` or download and run it as an executable JAR (from `Releases`)
 
 ## Features
-```
+
 -[x] Real-time rendering
 -[x] Real-time zooming (magnification) upto 10^15
 -[x] Auto-zoom
@@ -19,7 +19,7 @@ Compile all and run `Main.class` or download and run it as an executable JAR (fr
 -[x] File I/O ("Save Image") with Swing's built-in "directory browser"
 -[] GPU operations instead of CPU
 -[] Unlimited numerical precision
-```
+
 
 Comparison of Fast Mode (left) and Scaled Mode (right):
 
