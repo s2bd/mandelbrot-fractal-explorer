@@ -2,9 +2,31 @@
 Made in BlueJ,aye! :P
 ------------------------------------------------------------------------
 
-- PROJECT TITLE: Mandelbrot Explorer
-- PURPOSE OF PROJECT: Real-time visualization of the Mandelbrot fractal
-- VERSION or DATE: 2024-10-07 v0.0.1
-- HOW TO START THIS PROJECT: Compile and run Main
-- AUTHORS: Dewan Mukto
-- USER INSTRUCTIONS: Should be able to run it as an executable JAR, too.
+# Mandelbrot Explorer
+### Real-time visualization of the Mandelbrot fractal
+##### Latest update: 2024-10-09 v1.3.1
+
+Compile all and run `Main.class` or download and run it as an executable JAR (from `Releases`)
+
+## Features
+```
+-[x] Real-time rendering
+-[x] Real-time zooming (magnification) upto 10^15
+-[x] Auto-zoom
+-[x] Keyboard controls: W/S for zooming in/out; arrow keys for panning/moving the "camera"
+-[x] Keyboard shortcuts: A for auto-zoom, F/D for in/decreasing maximum iterations (details)
+-[x] GUI using Java Swing utilities
+-[x] File I/O ("Save Image") with Swing's built-in "directory browser"
+-[] GPU operations instead of CPU
+-[] Unlimited numerical precision
+```
+
+Comparison of Fast Mode (left) and Scaled Mode (right):
+
+![](/doc/image1.png)
+
+## Download
+
+- [MandelEx v1.0](https://dewanmukto.com/asset/MandelEx.jar)
+- [MandelEx v1.1](https://github.com/diztil/mandelbrot-explorer/releases/download/v1.1/MandelEx.jar)
+- [**MandelEx v1.3** (latest)](https://github.com/diztil/mandelbrot-explorer/releases/download/v1.3/MandelEx.jar)
