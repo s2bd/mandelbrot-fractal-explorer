@@ -26,5 +26,4 @@ Comparison of Fast Mode (left) and Scaled Mode (right):
 ![](/doc/image1.png)
 
 ## Download
-- [MandelEx v1.1](/releases/download/v1.1/MandelEx.jar)
-- [**MandelEx v1.3** (latest)](/releases/download/v1.3/MandelEx.jar)
+# [**MandelEx v1.3** (latest)](MandelEx.jar)
