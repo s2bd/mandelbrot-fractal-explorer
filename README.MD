@@ -26,7 +26,5 @@ Comparison of Fast Mode (left) and Scaled Mode (right):
 ![](/doc/image1.png)
 
 ## Download
-
-- [MandelEx v1.0](https://dewanmukto.com/asset/MandelEx.jar)
-- [MandelEx v1.1](https://github.com/diztil/mandelbrot-explorer/releases/download/v1.1/MandelEx.jar)
-- [**MandelEx v1.3** (latest)](https://github.com/diztil/mandelbrot-explorer/releases/download/v1.3/MandelEx.jar)
+- [MandelEx v1.1](/releases/download/v1.1/MandelEx.jar)
+- [**MandelEx v1.3** (latest)](/releases/download/v1.3/MandelEx.jar)
